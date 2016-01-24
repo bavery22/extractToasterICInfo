@@ -1,0 +1,14 @@
+This pulls the package and recipes used lists from toaster to aid in debugging.
+
+Usage:
+extract_buildinfo.sh <build_num> <target_num> <file_base>
+build_num & target_num can be found by clicking on the build and looking in the url. It will look something like http://192.168.168.66:8005/toastergui/build/$BUILD_NUM/target/$TARGET_NUM?count=
+file_base is the start of the names that will be used to make the files.  For example, if file_base is cow. then you will get cow-packages.html,cow-packages.list,cow-recipes.html, and cow-recipes.list.  The lists can be diffed, the /html files are the original html.
+
+Full usage:
+extract_buildinfo.sh 1 1 core-image-sato
+extract_buildinfo.sh 1 1 custom-sato
+# shows different packages
+diff core-image-sato-packages.list custom-sato-packages.list
+# shows different recipes
+diff core-image-sato-recipes.list custom-sato-recipes.list
